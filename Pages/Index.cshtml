@@ -1,0 +1,69 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Profile";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - My Profile</title>
+    <link rel="stylesheet" href="~/css/index.css" />
+</head>
+<body>
+    <header>
+        <div class="profile-picture">
+            <img src="~/img/phalanndwa.jpg" alt="Profile Picture" />
+        </div>
+        <h1>@Model.Name</h1>
+        <p>@Model.Profession</p>
+    </header>
+
+    <section id="about">
+        <h2>About Me</h2>
+        <p>@Model.AboutMe</p>
+    </section>
+
+    <section id="experience">
+        <h2>Experience</h2>
+        <ul>
+            @foreach (var job in Model.Experience)
+            {
+                <li>
+                    <h3>@job.Title</h3>
+                    <p>@job.Company</p>
+                    <p>@job.Description</p>
+                </li>
+            }
+        </ul>
+    </section>
+
+    <section id="projects">
+        <h2>Projects</h2>
+        <ul>
+            @foreach (var project in Model.Projects)
+            {
+                <li>
+                    <h3>@project.Name</h3>
+                    <p>@project.Description</p>
+                </li>
+            }
+        </ul>
+    </section>
+
+    <section id="gallery">
+        <h2>Gallery</h2>
+        <div class="gallery-container">
+            <img src="~/img/Masase Beauty Range.jpg" alt="Image 1" class="animated-image" />
+            <img src="~/img/Nail 8.jpg" alt="Image 2" class="animated-image" />
+            <img src="~/img/WhatsApp Image 2024-06-18 at 01.49.49_069d015e.jpg" alt="Image 3" class="animated-image" />
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; @DateTime.Now.Year - @Model.Name</p>
+    </footer>
+</body>
+</html>
